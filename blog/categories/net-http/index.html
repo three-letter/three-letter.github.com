@@ -5,12 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Three-letter's Blog</title>
+  <title>Category: net/http - Three-letter's Blog</title>
   <meta name="author" content="Three-letter">
 
   
-  <meta name="description" content="1. 网站的自动登录 (1)引入net/http库 require 'net/http' (2)获取登录网站后的cookie rsp = con.post(url.path,data,{})
-cookie = rsp.response['set-cookie'] (3) &hellip;">
+  <meta name="description" content="Category: net/http">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -19,7 +18,7 @@ cookie = rsp.response['set-cookie'] (3) &hellip;">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://three-letter.github.com/">
+  <link rel="canonical" href="http://three-letter.github.comblog/categories/net-http/">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <script src="/javascripts/modernizr-2.0.js"></script>
@@ -63,90 +62,40 @@ cookie = rsp.response['set-cookie'] (3) &hellip;">
 </nav>
   <div id="main">
     <div id="content">
-      <div class="blog-index">
+      <div>
+<article role="article">
   
-  
-  
-    <article>
-      
   <header>
-    
-      <h1 class="entry-title"><a href="/blog/2012/10/22/tong-guo-net-slash-httpshi-xian-wang-zhan-zi-dong-deng-lu-he-fa-tie/">通过net/http实现自动登录和发贴</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-10-22T16:42:00+08:00" pubdate data-updated="true">Oct 22<span>nd</span>, 2012</time>
-        
-      </p>
+    <h1 class="entry-title">Category: Net/http</h1>
     
   </header>
+  
+  <div id="blog-archives" class="category">
 
 
-  <div class="entry-content"><h3>1. 网站的自动登录</h3>
 
-<p>(1)引入net/http库</p>
+  
+  <h2>2012</h2>
 
-<pre><code>require 'net/http'
-</code></pre>
+<article>
+  
+<h1><a href="/blog/2012/10/22/tong-guo-net-slash-httpshi-xian-wang-zhan-zi-dong-deng-lu-he-fa-tie/">通过net/http实现自动登录和发贴</a></h1>
+<time datetime="2012-10-22T16:42:00+08:00" pubdate><span class='month'>Oct</span> <span class='day'>22</span> <span class='year'>2012</span></time>
 
-<p>(2)获取登录网站后的cookie</p>
+<footer>
+  <span class="categories">posted in <a class='category' href='/blog/categories/net-http/'>net/http</a></span>
+</footer>
 
-<pre><code>rsp    = con.post(url.path,data,{})
-cookie = rsp.response['set-cookie']
-</code></pre>
 
-<p>(3)一般将上述操作封装成一个login方法，返回http连接和cookie用于之后的权限操作</p>
+</article>
 
-<pre><code>def login
-    url = URI.parse(url) unless url.is_a?(URI)
-    con = Net::HTTP.new(url.host,url.port)
-    data = "username=abc&amp;password=123"
-    rsp = con.post(url.path,data,{})
-    cookie = rsp.response['set-cookie']
-    head = {
-        'Content-Type' =&gt; "application/x-www-form-urlencoded; charset=UTF-8",
-        'Cookie'       =&gt; cookie
-    }
-    connection, headers = con, head
-end
-</code></pre>
-
-<h3>2. 自动发贴</h3>
-
-<p>通过上述的自动登录获取对应的con连接和headers，实现网站的权限操作(比如发贴, 查看个人信息等)</p>
-
-<pre><code>def post
-    con, headers = login
-    data = "post_title=abc&amp;post_content=xyz&amp;user_id=123"
-    rsp = con.post("post submit action",data,headers)
-    msg = rsp.body
-end
-</code></pre>
 </div>
-  
-  
 
-
-    </article>
   
-  <div class="pagination">
-    
-    <a href="/blog/archives">Blog Archives</a>
-    
-  </div>
+</article>
+
 </div>
+
 <aside class="sidebar">
   
     <section>
@@ -167,6 +116,7 @@ end
 
   
 </aside>
+
 
     </div>
   </div>

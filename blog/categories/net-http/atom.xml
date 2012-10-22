@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Three-letter's Blog]]></title>
-  <link href="http://three-letter.github.com/atom.xml" rel="self"/>
+  <title><![CDATA[Category: net/http | Three-letter's Blog]]></title>
+  <link href="http://three-letter.github.com/blog/categories/net-http/atom.xml" rel="self"/>
   <link href="http://three-letter.github.com/"/>
   <updated>2012-10-22T17:51:45+08:00</updated>
   <id>http://three-letter.github.com/</id>
