@@ -5,13 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Blog Archive - Three-letter's Blog</title>
+  <title>ubuntu上安装和配置postgresql - Three-letter's Blog</title>
   <meta name="author" content="Three-letter">
 
   
-  <meta name="description" content="Blog Archive 2012 ubuntu上安装和配置postgresql
-Dec 17 2012 posted in pg, postgresql 通过net/http实现自动登录和发贴
-Oct 22 2012 posted in net/http Recent Posts &hellip;">
+  <meta name="description" content="1.安装postgresql ubuntu上有现成的postgresql，故使用apt-get直接安装 sudo apt-get install postgresql-9.1 2.创建用户组和用户 postgresql需要一个专门的用户才能使用 sudo groupadd postgresql &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -20,7 +18,7 @@ Oct 22 2012 posted in net/http Recent Posts &hellip;">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://three-letter.github.com/blog/archives/">
+  <link rel="canonical" href="http://three-letter.github.com/blog/2012/12/17/ubuntushang-an-zhuang-he-pei-zhi-postgresql/">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <script src="/javascripts/modernizr-2.0.js"></script>
@@ -77,50 +75,135 @@ Oct 22 2012 posted in net/http Recent Posts &hellip;">
   <div id="main">
     <div id="content">
       <div>
-<article role="article">
+<article class="hentry" role="article">
   
   <header>
-    <h1 class="entry-title">Blog Archive</h1>
+    
+      <h1 class="entry-title">Ubuntu上安装和配置postgresql</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-12-17T14:50:00+08:00" pubdate data-updated="true">Dec 17<span>th</span>, 2012</time>
+        
+      </p>
     
   </header>
-  
-  <div id="blog-archives">
 
 
+<div class="entry-content"><h3>1.安装postgresql</h3>
 
-  
-  <h2>2012</h2>
+<p>ubuntu上有现成的postgresql，故使用apt-get直接安装</p>
 
-<article>
-  
-<h1><a href="/blog/2012/12/17/ubuntushang-an-zhuang-he-pei-zhi-postgresql/">ubuntu上安装和配置postgresql</a></h1>
-<time datetime="2012-12-17T14:50:00+08:00" pubdate><span class='month'>Dec</span> <span class='day'>17</span> <span class='year'>2012</span></time>
+<pre><code>sudo apt-get install postgresql-9.1
+</code></pre>
 
-<footer>
-  <span class="categories">posted in <a class='category' href='/blog/categories/pg/'>pg</a>, <a class='category' href='/blog/categories/postgresql/'>postgresql</a></span>
-</footer>
+<h3>2.创建用户组和用户</h3>
 
+<p>postgresql需要一个专门的用户才能使用</p>
 
-</article>
+<pre><code>sudo groupadd postgresql
+sudo useradd -g postgres postgresql
+</code></pre>
 
+<p>需要给用户postgres更改密码</p>
 
+<pre><code>sudo passwd postgres
+</code></pre>
 
-<article>
-  
-<h1><a href="/blog/2012/10/22/tong-guo-net-slash-httpshi-xian-wang-zhan-zi-dong-deng-lu-he-fa-tie/">通过net/http实现自动登录和发贴</a></h1>
-<time datetime="2012-10-22T16:42:00+08:00" pubdate><span class='month'>Oct</span> <span class='day'>22</span> <span class='year'>2012</span></time>
+<h3>3.创建数据库文件存储目录并给postgres赋权</h3>
 
-<footer>
-  <span class="categories">posted in <a class='category' href='/blog/categories/net-http/'>net/http</a></span>
-</footer>
+<pre><code>sudo mkdir /usr/local/pgsql/data
+cd /usr/local/pgsql
+sudo chown -R postgres:postgresql data
+</code></pre>
 
+<h3>4.初始化数据库目录</h3>
 
-</article>
+<p>ubuntu默认安装pg目录为: /usr/lib/postgresql/9.1</p>
 
+<pre><code>su postgres
+/usr/lib/postgresql/9.1/bin/initdb -D /usr/local/pgsql/data
+</code></pre>
+
+<h3>5.启动数据库</h3>
+
+<pre><code>su postgres
+/usr/lib/postgresql/9.1/bin/postmaster -D /usr/local/pgsql/data
+</code></pre>
+
+<h3>6.给postgresql命令做软连接，方便之后的操作</h3>
+
+<pre><code>sudo ln -s /usr/lib/postgresql/9.1/bin/* /usr/bin
+</code></pre>
 </div>
 
+
+  <footer>
+    <p class="meta">
+      
   
+
+<span class="byline author vcard">Posted by <span class="fn">Three-letter</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-12-17T14:50:00+08:00" pubdate data-updated="true">Dec 17<span>th</span>, 2012</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/pg/'>pg</a>, <a class='category' href='/blog/categories/postgresql/'>postgresql</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://three-letter.github.com/blog/2012/12/17/ubuntushang-an-zhuang-he-pei-zhi-postgresql/" data-via="" data-counturl="http://three-letter.github.com/blog/2012/12/17/ubuntushang-an-zhuang-he-pei-zhi-postgresql/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2012/10/22/tong-guo-net-slash-httpshi-xian-wang-zhan-zi-dong-deng-lu-he-fa-tie/" title="Previous Post: 通过net/http实现自动登录和发贴">&laquo; 通过net/http实现自动登录和发贴</a>
+      
+      
+    </p>
+  </footer>
 </article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
 
 </div>
 
@@ -164,7 +247,10 @@ Oct 22 2012 posted in net/http Recent Posts &hellip;">
       var disqus_shortname = 'threeletter';
       
         
-        var disqus_script = 'count.js';
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://three-letter.github.com/blog/2012/12/17/ubuntushang-an-zhuang-he-pei-zhi-postgresql/';
+        var disqus_url = 'http://three-letter.github.com/blog/2012/12/17/ubuntushang-an-zhuang-he-pei-zhi-postgresql/';
+        var disqus_script = 'embed.js';
       
     (function () {
       var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
