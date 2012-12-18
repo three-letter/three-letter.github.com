@@ -151,24 +151,14 @@ git fetch upstream
 git remote add forker git://github.com/forker/project.git
 # 这里的远程连接指定的是git read-only地址
 git fetch forker
+# 获取指定forker所有的已提交修改
+git merge forker/master
+# 会提示automatically merge fail
+git status
+# 打开对应的文件手工合并即可
+git push 
+# 合并完成后提交github
 </code></pre>
-
-<p>  # 获取指定forker所有的已提交修改</p>
-
-<pre><code>git merge forker/master
-</code></pre>
-
-<p>  # 会提示automatically merge fail</p>
-
-<pre><code>git status
-</code></pre>
-
-<p>  # 打开对应的文件手工合并即可</p>
-
-<pre><code>git push 
-</code></pre>
-
-<p>  # 合并完成后提交github</p>
 </div>
 
 
