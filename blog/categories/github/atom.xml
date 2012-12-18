@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: github | Three-letter's Blog]]></title>
+  <link href="http://three-letter.github.com/blog/categories/github/atom.xml" rel="self"/>
+  <link href="http://three-letter.github.com/"/>
+  <updated>2012-12-18T16:39:38+08:00</updated>
+  <id>http://three-letter.github.com/</id>
+  <author>
+    <name><![CDATA[Three-letter]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[github社会化编程之fork和pull request]]></title>
+    <link href="http://three-letter.github.com/blog/2012/12/18/githubshe-hui-hua-bian-cheng-zhi-forkhe-pull-request/"/>
+    <updated>2012-12-18T14:24:00+08:00</updated>
+    <id>http://three-letter.github.com/blog/2012/12/18/githubshe-hui-hua-bian-cheng-zhi-forkhe-pull-request</id>
+    <content type="html"><![CDATA[<p>在社会化编程上，<a href="https://github.com/">github</a>让程序员间协同工作变得更加简单有趣。
+通过对<a href="https://help.github.com/articles/fork-a-repo">fork</a>和<a href="https://help.github.com/articles/using-pull-requests">pull request</a>的基本应用对github社会化编程有个清晰的认识。</p>
+
+<h3>Fork</h3>
+
+<h4>1.创建项目分支</h4>
+
+<p>在目标repo详细页的右上角有个Fork按钮，点击后提示"fork the repo",等待几秒后跳转至该repo详细页。</p>
+
+<h4>2.克隆之前创建的项目分支至本地</h4>
+
+<pre><code>git clone git@github.com:yourname/yourforkproject.git
+</code></pre>
+
+<h4>3.配置远程连接</h4>
+
+<pre><code>git remote add upstream https://github.com/owen/project.git
+# 添加一个名为upstream的目标项目远程连接
+git fetch upstream
+# 获取目标项目的更新代码至本地
+</code></pre>
+
+<h3>Pull Request</h3>
+
+<h4>1.提交修改至项目所有者</h4>
+
+<p>通过github项目分支的详细页右上角Pull Request按钮，确认该request的标题和描述后即可提交。当然也可查看具体修改的文件信息内容。</p>
+
+<h4>2.项目所有者查看修改</h4>
+
+<p>有以下两种方式：</p>
+
+<p>所有的修改请求都会发送邮件至所有者的github注册邮箱，里面有修改信息和对应的链接，点开即可查看。</p>
+
+<p>在原始项目的详细页上面的工具栏中Pull Requests(123)出显示了全部的待合并的修改。
+项目所有者点击进去查看，可根据修改的有效性进行合并或直接关闭</p>
+
+<h4>3.合并有用的修改</h4>
+
+<p>若修改没有冲突，github会提示"This request can be automatically merge",那么直接点击后面的Merge Pull Request按钮即可合并</p>
+
+<p>若存在冲突，github会提示"Thoes request can't be automatically merge"，后面也不存在Merge Pull Request按钮，需要手工合并
+通过以下方式合并：</p>
+
+<pre><code>cd project
+git remote add forker git://github.com/forker/project.git
+# 这里的远程连接指定的是git read-only地址
+git fetch forker
+</code></pre>
+
+<p>  # 获取指定forker所有的已提交修改</p>
+
+<pre><code>git merge forker/master
+</code></pre>
+
+<p>  # 会提示automatically merge fail</p>
+
+<pre><code>git status
+</code></pre>
+
+<p>  # 打开对应的文件手工合并即可</p>
+
+<pre><code>git push 
+</code></pre>
+
+<p>  # 合并完成后提交github</p>
+]]></content>
+  </entry>
+  
+</feed>
