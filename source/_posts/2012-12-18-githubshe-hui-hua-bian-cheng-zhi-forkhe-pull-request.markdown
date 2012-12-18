@@ -53,13 +53,13 @@ categories: github fork pull git
 	git remote add forker git://github.com/forker/project.git
 	# 这里的远程连接指定的是git read-only地址
 	git fetch forker
-  # 获取指定forker所有的已提交修改
+	# 获取指定forker所有的已提交修改
 	git merge forker/master
-  # 会提示automatically merge fail
+	# 会提示automatically merge fail
 	git status
-  # 打开对应的文件手工合并即可
+	# 打开对应的文件手工合并即可
 	git push 
-  # 合并完成后提交github
+	# 合并完成后提交github
 
 
 [github]: https://github.com/
