@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: tmux | Three-letter's Blog]]></title>
+  <link href="http://three-letter.github.com/blog/categories/tmux/atom.xml" rel="self"/>
+  <link href="http://three-letter.github.com/"/>
+  <updated>2012-12-20T09:53:54+08:00</updated>
+  <id>http://three-letter.github.com/</id>
+  <author>
+    <name><![CDATA[Three-letter]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Tmux基本使用]]></title>
+    <link href="http://three-letter.github.com/blog/2012/12/19/tmuxji-ben-shi-yong/"/>
+    <updated>2012-12-19T23:41:00+08:00</updated>
+    <id>http://three-letter.github.com/blog/2012/12/19/tmuxji-ben-shi-yong</id>
+    <content type="html"><![CDATA[<p>由于在工作中需要经常性使用终端且有多个操作同时进行，在正常的终端下需要开多个Tab或者窗口，不停的在之间来回切换，非常的麻烦。</p>
+
+<p><a href="http://tmux.sourceforge.net">Tmux</a>的多session和窗口可分屏机制正好完美的解决了这种问题，现在就来体验tmux。</p>
+
+<h3>安装tmux</h3>
+
+<p>  sudo apt-get install tmux</p>
+
+<h3>基本用法</h3>
+
+<p>安装完成后，在终端中直接输入 <code>tmux</code> 即可启动。
+启动后窗口的最下栏左侧有该tmux当前session(默认是数字0-9)和应用(默认是~）的名字，如：[blog] 0:vim*</p>
+
+<h4>1.创建命名session</h4>
+
+<p>创建指定名称的session</p>
+
+<pre><code>tmux new-session -s blog
+</code></pre>
+
+<p>成功之后便可以该新tmux窗口中进行各种操作，同时可以通过快捷键C-b d退出该窗口(只是隐藏并未关闭该session)</p>
+
+<h4>2.查询全部的session</h4>
+
+<p>可查询已创建的全部tmux session</p>
+
+<p>  tmux list-sessions</p>
+
+<h4>3.打开</h4>
+
+<p>可根据需要打开对应的session窗口</p>
+
+<p>  tmux a -t blog</p>
+
+<h4>4.关闭session</h4>
+
+<p>支持关闭指定session或全部关闭</p>
+
+<p>  tmux kill-session blog
+  tmux kill-server</p>
+
+<h3>5.窗口分屏</h3>
+
+<p>打开具体session窗口后，可通过快捷键对窗口进行相应的分屏操作</p>
+
+<pre><code>C-b ": 上下分屏 
+C-b %:  左右分屏
+</code></pre>
+
+<p>同时分屏后有两种方式对各屏幕进行切换跳转</p>
+
+<pre><code>C-b o: 当前屏幕往下切换
+C-b hjkl: 当前屏幕上下左右切换
+</code></pre>
+
+<p>最后附一张分屏后名为blog的tmux窗口</p>
+
+<p><img src="/images/tmux.png" alt="tmux split" /></p>
+]]></content>
+  </entry>
+  
+</feed>
