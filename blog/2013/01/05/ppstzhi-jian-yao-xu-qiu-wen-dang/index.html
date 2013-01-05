@@ -5,11 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Tmux基本使用 - Three-letter's Blog</title>
+  <title>PPST之简要需求文档 - Three-letter's Blog</title>
   <meta name="author" content="Three-letter">
 
   
-  <meta name="description" content="由于在工作中需要经常性使用终端且有多个操作同时进行，在正常的终端下需要开多个Tab或者窗口，不停的在之间来回切换，非常的麻烦。 Tmux的多session和窗口可分屏机制正好完美的解决了这种问题，现在就来体验tmux。 安装tmux sudo apt-get install tmux 基本用法 &hellip;">
+  <meta name="description" content="PPST需求文档 修订历史 版本 说明 编制人日期 v1.0初次halsey2013-01-04 1. 引言 1.1 系统概述 PPST(the platform for programming to share and transactions) &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://three-letter.github.com/blog/2012/12/19/tmuxji-ben-shi-yong/">
+  <link rel="canonical" href="http://three-letter.github.com/blog/2013/01/05/ppstzhi-jian-yao-xu-qiu-wen-dang/">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <script src="/javascripts/modernizr-2.0.js"></script>
@@ -79,7 +79,7 @@
   
   <header>
     
-      <h1 class="entry-title">Tmux基本使用</h1>
+      <h1 class="entry-title">PPST之简要需求文档</h1>
     
     
       <p class="meta">
@@ -95,71 +95,114 @@
   
 
 
-<time datetime="2012-12-19T23:41:00+08:00" pubdate data-updated="true">Dec 19<span>th</span>, 2012</time>
+<time datetime="2013-01-05T17:41:00+08:00" pubdate data-updated="true">Jan 5<span>th</span>, 2013</time>
         
       </p>
     
   </header>
 
 
-<div class="entry-content"><p>由于在工作中需要经常性使用终端且有多个操作同时进行，在正常的终端下需要开多个Tab或者窗口，不停的在之间来回切换，非常的麻烦。</p>
+<div class="entry-content"><table style="border:1px solid black;">
+<tr>
+<td width="120px">PPST需求文档</td>
+</tr>
+<tr>
+<td width="100px">修订历史</td>
+</tr>
+<tr>
+<td width="60px">版本</td> <td width="60px">说明</td> <td width="80px">编制人</td><td width="60px">日期</td>
+</tr>
+<tr>
+<td>v1.0</td><td>初次</td><td>halsey</td><td>2013-01-04</td>
+</tr>
+</table>
 
-<p><a href="http://tmux.sourceforge.net">Tmux</a>的多session和窗口可分屏机制正好完美的解决了这种问题，现在就来体验tmux。</p>
 
-<h3>安装tmux</h3>
+<p></p>
 
-<p>  sudo apt-get install tmux</p>
+<h3>1. 引言</h3>
 
-<h3>基本用法</h3>
+<h4>1.1 系统概述</h4>
 
-<p>安装完成后，在终端中直接输入 <code>tmux</code> 即可启动。
-启动后窗口的最下栏左侧有该tmux当前session(默认是数字0-9)和应用(默认是~）的名字，如：[blog] 0:vim*</p>
+<p>PPST(the platform for programming to share and transactions)是针对编程爱好者基于视频方式分享交易编程经验和心得的开放平台。</p>
 
-<h4>1.创建命名session</h4>
+<h4>1.2 运行环境</h4>
 
-<p>创建指定名称的session</p>
+<p>基于Ruby on Rails + Postgresql + Thin实现，开发测试环境部署在Heroku。</p>
 
-<pre><code>tmux new-session -s blog
-</code></pre>
+<h4>1.3 目标用户</h4>
 
-<p>成功之后便可以该新tmux窗口中进行各种操作，同时可以通过快捷键C-b d退出该窗口(只是隐藏并未关闭该session)</p>
+<p>编程爱好者</p>
 
-<h4>2.查询全部的session</h4>
+<h3>2. 功能需求</h3>
 
-<p>可查询已创建的全部tmux session</p>
+<h4>2.1 系统背景</h4>
 
-<p>  tmux list-sessions</p>
+<p>目前国内编程环境相对落后，很多编程菜鸟因为各种原因(比如：英文 墙等)无法获得较新的文档资料，在编程的学习路上艰难前进，同时大部分编程老鸟出于一些原因(如：时间 文字)在分享时过于简略，不够系统。</p>
 
-<h4>3.打开</h4>
+<p>PPST以视频的方式向编程菜鸟详细展示了具体编程时的经验和技巧，同时提供的交易系统能为分享者提供对应的报酬。通过该平台编程爱好者能很好的解决各自的需求且形式简单明了，营造国内健康良好的编程氛围</p>
 
-<p>可根据需要打开对应的session窗口</p>
+<h4>2.2 系统总体流程</h4>
 
-<p>  tmux a -t blog</p>
+<p>暂略</p>
 
-<h4>4.关闭session</h4>
+<h4>2.3 需求分析</h4>
 
-<p>支持关闭指定session或全部关闭</p>
+<h5>2.3.1 用户中心(User)</h5>
 
-<p>  tmux kill-session blog
-  tmux kill-server</p>
+<p>注册: 未注册用户通过用户名和密码注册网站，为了方便不需要邮箱</p>
 
-<h3>5.窗口分屏</h3>
+<p>登录: 注册用户通过用户名和密码登录</p>
 
-<p>打开具体session窗口后，可通过快捷键对窗口进行相应的分屏操作</p>
+<p>验证: 对于发布有偿分享交易的注册用户需要通过验证码和邮箱进行Verification并绑定支付宝账号</p>
 
-<pre><code>C-b ": 上下分屏 
-C-b %:  左右分屏
-</code></pre>
+<h5>2.3.2 视播中心(Broadcast)</h5>
 
-<p>同时分屏后有两种方式对各屏幕进行切换跳转</p>
+<p>无偿分享视播: 注册用户直接上传视播资源</p>
 
-<pre><code>C-b o: 当前屏幕往下切换
-C-b hjkl: 当前屏幕上下左右切换
-</code></pre>
+<p>有偿分享视播: 验证用户上传视播资源，并选择对应的有偿参数</p>
 
-<p>最后附一张分屏后名为blog的tmux窗口</p>
+<p>悬赏视播: 注册用户根据自己的需求悬赏相应的视播资源</p>
 
-<p><img src="/images/tmux.png" alt="tmux split" /></p>
+<p>Ps：对于悬赏是否需要平台做第三方</p>
+
+<h5>2.3.3 评论中心(Comment)</h5>
+
+<p>评论视播: 注册用户评论指定的视播资源，若已付费观看过的则显示特殊标记用于其他用户初步了解视播资源的有效性</p>
+
+<h5>2.3.4 消息中心(Message)</h5>
+
+<p>播放有偿视播: 注册用户付费观看有偿视播资源后，系统向该视播资源的发布者和观看者同时发送用户付费观看消息</p>
+
+<p>评论视播: 注册用户评论视播后，系统向该视播发布者发送消息(暂不考虑过多导致垃圾消息)</p>
+
+<p>Ps：对于有一定社交氛围后可考虑@功能</p>
+
+<h3>3. 非功能需求</h3>
+
+<h4>3.1 数据有效性规则</h4>
+
+<p>用户名: 3 - 8位非特殊字符</p>
+
+<p>验证邮箱: email规则</p>
+
+<p>视播分享: title为1-32位非特殊字符 desc，tag可选</p>
+
+<p>评论: 1-128字符</p>
+
+<h4>3.2 数据存储</h4>
+
+<p>视播资源以文件的形式保存在upload目录下，其他数据保存在一个数据库postgresql</p>
+
+<h4>3.3 扩展性要求</h4>
+
+<p>前期不开放非管理员用户上传视播资源</p>
+
+<h4>3.4 如何录制视频</h4>
+
+<p>为所有网站用户分享在不同OS下录制视频的方法</p>
+
+<p>未完待续…</p>
 </div>
 
 
@@ -182,12 +225,12 @@ C-b hjkl: 当前屏幕上下左右切换
   
 
 
-<time datetime="2012-12-19T23:41:00+08:00" pubdate data-updated="true">Dec 19<span>th</span>, 2012</time>
+<time datetime="2013-01-05T17:41:00+08:00" pubdate data-updated="true">Jan 5<span>th</span>, 2013</time>
       
 
 <span class="categories">
   
-    <a class='category' href='/blog/categories/tmux/'>tmux</a>
+    <a class='category' href='/blog/categories/ppst/'>ppst</a>
   
 </span>
 
@@ -196,7 +239,7 @@ C-b hjkl: 当前屏幕上下左右切换
     
       <div class="sharing">
   
-  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://three-letter.github.com/blog/2012/12/19/tmuxji-ben-shi-yong/" data-via="" data-counturl="http://three-letter.github.com/blog/2012/12/19/tmuxji-ben-shi-yong/" >Tweet</a>
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://three-letter.github.com/blog/2013/01/05/ppstzhi-jian-yao-xu-qiu-wen-dang/" data-via="" data-counturl="http://three-letter.github.com/blog/2013/01/05/ppstzhi-jian-yao-xu-qiu-wen-dang/" >Tweet</a>
   
   
   
@@ -205,10 +248,8 @@ C-b hjkl: 当前屏幕上下左右切换
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/2012/12/18/githubshe-hui-hua-bian-cheng-zhi-forkhe-pull-request/" title="Previous Post: github社会化编程之fork和pull request">&laquo; github社会化编程之fork和pull request</a>
+        <a class="basic-alignment left" href="/blog/2012/12/19/tmuxji-ben-shi-yong/" title="Previous Post: Tmux基本使用">&laquo; Tmux基本使用</a>
       
-      
-        <a class="basic-alignment right" href="/blog/2013/01/05/ppstzhi-jian-yao-xu-qiu-wen-dang/" title="Next Post: PPST之简要需求文档">PPST之简要需求文档 &raquo;</a>
       
     </p>
   </footer>
@@ -275,8 +316,8 @@ C-b hjkl: 当前屏幕上下左右切换
       
         
         // var disqus_developer = 1;
-        var disqus_identifier = 'http://three-letter.github.com/blog/2012/12/19/tmuxji-ben-shi-yong/';
-        var disqus_url = 'http://three-letter.github.com/blog/2012/12/19/tmuxji-ben-shi-yong/';
+        var disqus_identifier = 'http://three-letter.github.com/blog/2013/01/05/ppstzhi-jian-yao-xu-qiu-wen-dang/';
+        var disqus_url = 'http://three-letter.github.com/blog/2013/01/05/ppstzhi-jian-yao-xu-qiu-wen-dang/';
         var disqus_script = 'embed.js';
       
     (function () {
