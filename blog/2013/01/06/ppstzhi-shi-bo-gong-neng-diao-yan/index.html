@@ -1,0 +1,399 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>PPST之视播功能调研 - Three-letter's Blog</title>
+  <meta name="author" content="Three-letter">
+
+  
+  <meta name="description" content="$(document).ready(function(){ $("#jquery_jplayer_1").jPlayer({
+ready: function () {
+$(this).jPlayer("setMedia", {
+ogv: "/assets/ &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://three-letter.github.com/blog/2013/01/06/ppstzhi-shi-bo-gong-neng-diao-yan/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="Three-letter's Blog" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-35761326-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Three-letter's Blog</a></h1>
+  
+    <h2>The Way To Learning Ruby/Rails.</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:three-letter.github.com" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">PPST之视播功能调研</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-01-06T16:35:00+08:00" pubdate data-updated="true">Jan 6<span>th</span>, 2013</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p><link href="/stylesheets/player.css" rel="stylesheet" type="text/css" /></p>
+
+<script type="text/javascript" src="/javascripts/jquery.min.js"></script>
+
+
+<script type="text/javascript" src="/javascripts/jquery.jplayer.min.js" ></script>
+
+
+<script type="text/javascript" src="http://www.jplayer.org/latest/js/jquery.jplayer.inspector.js"></script>
+
+
+<script type="text/javascript">
+
+$(document).ready(function(){
+        $("#jquery_jplayer_1").jPlayer({
+ready: function () {
+$(this).jPlayer("setMedia", {
+ogv: "/assets/Big_Buck_Bunny_Trailer.ogv",
+poster: "http://www.jplayer.org/video/poster/Big_Buck_Bunny_Trailer_480x270.png"
+}).jPlayer("load");
+},
+swfPath: "/assets",
+supplied: "ogv",
+size: {
+width: "240px",
+height: "100px",
+cssClass: "jp-video-360p"
+}
+});
+        $("#jplayer_inspector").jPlayerInspector({jPlayer:$("#jquery_jplayer_1")});
+
+        $("#btn-stop").click(function() {
+            $("#jquery_jplayer_1").jPlayer("stop");
+            }); 
+
+$("#jquery_jplayer_1").bind($.jPlayer.event.timeupdate, function(event){
+        var cur = event.jPlayer.status.currentTime;
+        if (cur > 5){
+        $(this).jPlayer("pause", 5);
+        $("#play-a").click();
+        }
+        });
+});
+
+
+</script>
+
+
+
+
+<div id="jp_container_1" class="jp-video jp-video-episode">
+<div class="jp-type-single">
+<div id="jquery_jplayer_1" class="jp-jplayer"></div>
+<div class="jp-gui">
+<div class="jp-interface">
+<div class="jp-progress">
+<div class="jp-seek-bar">
+<div class="jp-play-bar"></div>
+</div>
+</div>
+<div class="jp-current-time"></div>
+<div class="jp-duration"></div>
+<div class="jp-controls-holder">
+<ul class="jp-controls">
+<li style=""><a href="javascript:;" class="jp-play" tabindex="1">play</a></li>
+<li><a href="javascript:;" class="jp-pause" tabindex="1">pause</a></li>
+<li><a href="javascript:;" class="jp-stop" tabindex="1">stop</a></li>
+<li><a href="javascript:;" class="jp-mute" tabindex="1" title="mute">mute</a></li>
+<li><a href="javascript:;" class="jp-unmute" tabindex="1" title="unmute">unmute</a></li>
+<li><a href="javascript:;" class="jp-volume-max" tabindex="1" title="max volume">max volume</a></li>
+</ul>
+<div class="jp-volume-bar">
+<div class="jp-volume-bar-value"></div>
+</div>
+<ul class="jp-toggles">
+<li><a href="javascript:;" class="jp-full-screen" tabindex="1" title="full screen">full screen</a></li>
+<li><a href="javascript:;" class="jp-restore-screen" tabindex="1" title="restore screen">restore screen</a></li>
+<li><a href="javascript:;" class="jp-repeat" tabindex="1" title="repeat">repeat</a></li>
+<li><a href="javascript:;" class="jp-repeat-off" tabindex="1" title="repeat off">repeat off</a></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="jp-no-solution">
+<span>Update Required</span>
+To play the media you will need to either update your browser to a recent version or update your <a href="http://get.adobe.com/flashplayer/" target="_blank">Flash plugin</a>.
+</div>
+</div>
+</div>
+
+
+<div id="jplayer_inspector"></div>
+
+
+<p></p>
+
+<p><a href="#play-pay" id="play-a" role="button" class="btn" data-toggle="modal" style="display:none">Pay</a></p>
+
+<div id="play-pay" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal-header">
+<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+</div>
+<div class="modal-body">
+<p>亲~ 该视频只能试看5s，若需完整观看，请付费！</p>
+</div>
+<div class="modal-footer">
+<button class="btn" data-dismiss="modal" aria-hidden="true">Cancle</button>
+<button class="btn btn-primary">Go To Pay</button>
+</div>
+</div>
+
+
+
+
+<script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-transition.js"></script>
+
+
+<script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-alert.js"></script>
+
+
+<script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-modal.js"></script>
+
+
+<script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-dropdown.js"></script>
+
+
+<script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-scrollspy.js"></script>
+
+
+<script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-tab.js"></script>
+
+
+<script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-tooltip.js"></script>
+
+
+<script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-popover.js"></script>
+
+
+<script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-button.js"></script>
+
+
+<script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-collapse.js"></script>
+
+
+<script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-carousel.js"></script>
+
+
+<script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-typeahead.js"></script>
+
+
+<script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-affix.js"></script>
+
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Three-letter</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-01-06T16:35:00+08:00" pubdate data-updated="true">Jan 6<span>th</span>, 2013</time>
+      
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://three-letter.github.com/blog/2013/01/06/ppstzhi-shi-bo-gong-neng-diao-yan/" data-via="" data-counturl="http://three-letter.github.com/blog/2013/01/06/ppstzhi-shi-bo-gong-neng-diao-yan/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2013/01/05/ppstzhi-jian-yao-xu-qiu-wen-dang/" title="Previous Post: PPST之简要需求文档">&laquo; PPST之简要需求文档</a>
+      
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2013/01/06/ppstzhi-shi-bo-gong-neng-diao-yan/">PPST之视播功能调研</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/01/05/ppstzhi-jian-yao-xu-qiu-wen-dang/">PPST之简要需求文档</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/12/19/tmuxji-ben-shi-yong/">Tmux基本使用</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/12/18/githubshe-hui-hua-bian-cheng-zhi-forkhe-pull-request/">github社会化编程之fork和pull request</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/12/17/ubuntushang-an-zhuang-he-pei-zhi-postgresql/">ubuntu上安装和配置postgresql</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2013 - Three-letter -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'threeletter';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://three-letter.github.com/blog/2013/01/06/ppstzhi-shi-bo-gong-neng-diao-yan/';
+        var disqus_url = 'http://three-letter.github.com/blog/2013/01/06/ppstzhi-shi-bo-gong-neng-diao-yan/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>
