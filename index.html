@@ -9,7 +9,7 @@
   <meta name="author" content="Three-letter">
 
   
-  <meta name="description" content="视播功能的基本需求 在PPST中视播功能应该包含以下两个： 1）视频播放，包括：外观 播放 暂停 停止 声音调节 全屏等 2）限时试看，能够在一定条件下限制视频资源的试看时间 媒体播放器jPlayer jPlayer是一款非常优秀的基于jQuery的HTML5开源播放器，支持音频和视频， &hellip;">
+  <meta name="description" content="视播功能的基本需求 在PPST中视播功能应该包含以下两个： 1）视频播放，包括：外观、播放、暂停、停止、声音调节、全屏等 2）限时试看，能够在一定条件下限制视频资源的试看时间 媒体播放器jPlayer jPlayer是一款非常优秀的基于jQuery的HTML5开源播放器，支持音频和视频， &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -109,7 +109,7 @@
 
 <p>在PPST中视播功能应该包含以下两个：</p>
 
-<p>1）视频播放，包括：外观 播放 暂停 停止 声音调节 全屏等</p>
+<p>1）视频播放，包括：外观、播放、暂停、停止、声音调节、全屏等</p>
 
 <p>2）限时试看，能够在一定条件下限制视频资源的试看时间</p>
 
@@ -121,7 +121,7 @@
 
 <p>1）构建一个jPlayer播放器</p>
 
-<p>其中有几个需要注意的设置：播放器支持的格式， 视频资源 jPlayer提供的swf 视频海报(封面)的路径，具体可参考如下：</p>
+<p>其中有几个需要注意的设置：播放器支持的格式， 视频资源、jPlayer提供的swf、视频海报(封面)的路径，具体可参考如下：</p>
 
 <pre><code>$("#jquery_jplayer_1").jPlayer({
     ready: function () {
@@ -147,7 +147,7 @@
 <pre><code>$.jPlayer.event.timeupdate * Occurs when the currentTime is changed. (~250ms between events during playback.)
 </code></pre>
 
-<p>实现原理及方法：jPlayer播放视频时，绑定其timeupdate事件，在指定条件下(如：限时试看5s)触发对应的功能(如：暂停播放 将视频播放时间回调至5s 显示提示信息)，具体代码如下：</p>
+<p>实现原理及方法：jPlayer播放视频时，绑定其timeupdate事件，在指定条件下(如：限时试看5s)触发对应的功能(如：暂停播放、将视频播放时间回调至5s、显示提示信息)，具体代码如下：</p>
 
 <pre><code>$("#jquery_jplayer_1").bind($.jPlayer.event.timeupdate, function(event){
     var cur = event.jPlayer.status.currentTime;
@@ -162,7 +162,7 @@
 
 <p>通过以上方法就能轻松实现视播的基本功能，通过<a href="http://ppst-demo.herokuapp.com/home/index">点击这里</a>查看demo。</p>
 
-<p>ps:demo部署在heroku(国外的云平台)上，可能会有点慢。</p>
+<p>ps:demo部署在heroku(国外的云平台)上，可能会有点卡或慢。</p>
 </div>
   
   
