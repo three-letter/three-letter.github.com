@@ -6,114 +6,69 @@ comments: true
 categories: 
 ---
 
-<link href="/stylesheets/player.css" rel="stylesheet" type="text/css" />
-<script type="text/javascript" src="/javascripts/jquery.min.js"></script>
-<script type="text/javascript" src="/javascripts/jquery.jplayer.min.js" ></script>
-<script type="text/javascript" src="http://www.jplayer.org/latest/js/jquery.jplayer.inspector.js"></script>
-<script type="text/javascript">
+### 视播功能的基本需求
 
-$(document).ready(function(){
-		$("#jquery_jplayer_1").jPlayer({
-ready: function () {
-$(this).jPlayer("setMedia", {
-ogv: "/assets/Big_Buck_Bunny_Trailer.ogv",
-poster: "http://www.jplayer.org/video/poster/Big_Buck_Bunny_Trailer_480x270.png"
-}).jPlayer("load");
-},
-swfPath: "/assets",
-supplied: "ogv",
-size: {
-width: "240px",
-height: "100px",
-cssClass: "jp-video-360p"
-}
-});
-		$("#jplayer_inspector").jPlayerInspector({jPlayer:$("#jquery_jplayer_1")});
+在PPST中视播功能应该包含以下两个：
 
-		$("#btn-stop").click(function() {
-			$("#jquery_jplayer_1").jPlayer("stop");
-			});	
+1）视频播放，包括：外观、播放、暂停、停止、声音调节、全屏等
 
-$("#jquery_jplayer_1").bind($.jPlayer.event.timeupdate, function(event){
+2）限时试看，能够在一定条件下限制视频资源的试看时间
+
+
+### 媒体播放器jPlayer
+
+[jPlayer]是一款非常优秀的基于jQuery的HTML5开源播放器，支持音频和视频，同时提供了2套非常fashion的皮肤。
+
+通过官网的[dev guide]能快速上手，其强大的功能完全能够满足视播的需求
+
+
+1）构建一个jPlayer播放器
+
+其中有几个需要注意的设置：播放器支持的格式， 视频资源、jPlayer提供的swf、视频海报(封面)的路径，具体可参考如下：
+
+	$("#jquery_jplayer_1").jPlayer({
+		ready: function () {
+			$(this).jPlayer("setMedia", {
+				ogv: "assets/Big_Buck_Bunny_Trailer.ogv",
+				poster: "http://www.jplayer.org/video/poster/Big_Buck_Bunny_Trailer_480x270.png"
+			});
+		},
+		swfPath: "assets",
+		supplied: "ogv",
+		size: {
+			width: "640px",
+			height: "360px",
+			cssClass: "jp-video-360p"
+		}
+	});
+
+
+2）限时试看
+
+jPlayer提供了事件 绑定及相关功能，查询[dev guide]后可以很清楚的发现timeupdate事件能满足限时试看需求，描述如下：
+
+	$.jPlayer.event.timeupdate * Occurs when the currentTime is changed. (~250ms between events during playback.)
+
+实现原理及方法：jPlayer播放视频时，绑定其timeupdate事件，在指定条件下(如：限时试看5s)触发对应的功能(如：暂停播放、将视频播放时间回调至5s、显示提示信息)，具体代码如下：
+
+	$("#jquery_jplayer_1").bind($.jPlayer.event.timeupdate, function(event){
 		var cur = event.jPlayer.status.currentTime;
 		if (cur > 5){
-		$(this).jPlayer("pause", 5);
-		$("#play-a").click();
+			$(this).jPlayer("pause", 5);
+			$("#play-a").click();
 		}
-		});
-});
+	});
 
 
-</script>
+3）demo展示
+
+通过以上方法就能轻松实现视播的基本功能，通过[点击这里]查看demo。
+
+ps:demo部署在heroku(国外的云平台)上，可能会有点卡或慢。
 
 
+[jPlayer]: http://www.jplayer.org
 
+[dev guide]: http://www.jplayer.org/latest/developer-guide
 
-<div id="jp_container_1" class="jp-video jp-video-episode">
-<div class="jp-type-single">
-<div id="jquery_jplayer_1" class="jp-jplayer"></div>
-<div class="jp-gui">
-<div class="jp-interface">
-<div class="jp-progress">
-<div class="jp-seek-bar">
-<div class="jp-play-bar"></div>
-</div>
-</div>
-<div class="jp-current-time"></div>
-<div class="jp-duration"></div>
-<div class="jp-controls-holder">
-<ul class="jp-controls">
-<li style=""><a href="javascript:;" class="jp-play" tabindex="1">play</a></li>
-<li><a href="javascript:;" class="jp-pause" tabindex="1">pause</a></li>
-<li><a href="javascript:;" class="jp-stop" tabindex="1">stop</a></li>
-<li><a href="javascript:;" class="jp-mute" tabindex="1" title="mute">mute</a></li>
-<li><a href="javascript:;" class="jp-unmute" tabindex="1" title="unmute">unmute</a></li>
-<li><a href="javascript:;" class="jp-volume-max" tabindex="1" title="max volume">max volume</a></li>
-</ul>
-<div class="jp-volume-bar">
-<div class="jp-volume-bar-value"></div>
-</div>
-<ul class="jp-toggles">
-<li><a href="javascript:;" class="jp-full-screen" tabindex="1" title="full screen">full screen</a></li>
-<li><a href="javascript:;" class="jp-restore-screen" tabindex="1" title="restore screen">restore screen</a></li>
-<li><a href="javascript:;" class="jp-repeat" tabindex="1" title="repeat">repeat</a></li>
-<li><a href="javascript:;" class="jp-repeat-off" tabindex="1" title="repeat off">repeat off</a></li>
-</ul>
-</div>
-</div>
-</div>
-<div class="jp-no-solution">
-<span>Update Required</span>
-To play the media you will need to either update your browser to a recent version or update your <a href="http://get.adobe.com/flashplayer/" target="_blank">Flash plugin</a>.
-</div>
-</div>
-</div>
-<div id="jplayer_inspector"></div>		
-
-<a href="#play-pay" id="play-a" role="button" class="btn" data-toggle="modal" style="display:none">Pay</a>
-<div id="play-pay" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-<div class="modal-header">
-<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-</div>
-<div class="modal-body">
-<p>亲~ 该视频只能试看5s，若需完整观看，请付费！</p>
-</div>
-<div class="modal-footer">
-<button class="btn" data-dismiss="modal" aria-hidden="true">Cancle</button>
-<button class="btn btn-primary">Go To Pay</button>
-</div>
-</div>
-
-<script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-transition.js"></script>
-<script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-alert.js"></script>
-<script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-modal.js"></script>
-<script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-dropdown.js"></script>
-<script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-scrollspy.js"></script>
-<script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-tab.js"></script>
-<script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-tooltip.js"></script>
-<script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-popover.js"></script>
-<script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-button.js"></script>
-<script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-collapse.js"></script>
-<script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-carousel.js"></script>
-<script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-typeahead.js"></script>
-<script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-affix.js"></script>
+[点击这里]: http://ppst-demo.herokuapp.com/home/index
