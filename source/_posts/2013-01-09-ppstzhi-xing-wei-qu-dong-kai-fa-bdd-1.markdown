@@ -149,7 +149,7 @@ ok~ 大功告成。。。
 
 
 
-最后，关于其他的测试方法和技巧，可以查询这两个网站：[Shoulda-matchers]和[Relish]
+最后，以上是BDD编程中最基本的使用方法，关于其中的许多奇淫技巧，可以查询这两个网站：[Shoulda-matchers]、[Relish]
 
 
 [Rspec]: http://rspec.info/
